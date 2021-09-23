@@ -1,0 +1,149 @@
+<!Doctype html>
+<Html>
+<head>
+<title></title>
+<style type="text/css">
+@import "bourbon";
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+body {
+  @include display(flex);
+  @include align-content(center);
+  color: #353535;
+  min-height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  text-align: center;
+  background-color: lightgreen;
+}
+
+.container{
+  padding: 60px 80px;
+  background-color: white;
+  box-shadow: 0 0 4px 1px #BBB;
+  margin: auto;
+  text-align: center;
+}
+
+.wrap{  
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 20px auto 30px auto;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.clicker{
+  background-color: white;
+  outline: none;  
+  font-weight: 600;
+	  position:absolute;
+  cursor: pointer;
+  padding: 0;
+	  border: none;
+	  height: 64px;
+	  width: 64px;
+  left: 8px;
+  top: 8px;
+	  border-radius: 100px;
+	  z-index: 2;
+}
+
+.clicker:active{
+	  transform: translate(0, 1px);
+  height: 63px;
+	  box-shadow: 0px 1px 0 0 rgb(190,190,190) inset;
+}
+
+.circle{
+	  position: relative;
+  border-radius:40px;
+	  width: 80px;
+	  height: 80px;
+	  z-index: 1;
+}
+
+.circle.third{
+  border-radius: 0;
+}
+
+.clicker.faster:hover + .circle, .clicker.faster:active + .circle {
+	  animation: rotator linear .4s infinite;
+}
+
+.clicker.fast:hover + .circle, .clicker.fast:active + .circle {
+	  animation: rotator linear .5s infinite;
+}
+
+.clicker:hover + .circle, .clicker:active + .circle {
+	  animation: rotator linear .8s infinite;
+}
+
+@keyframes rotator{
+	  from{ transform: rotate(0deg); }
+	  to{ transform: rotate(360deg); }
+}
+
+		
+.angled {
+			background-image: linear-gradient(45deg, 
+                white 0%,
+                white 30%,
+                rgb(20,190,235) 30%,
+								rgb(20,190,235) 70%, 
+                white 70%, 
+                white 100%);
+		}
+
+.angled.second{
+  			background-image: linear-gradient( 
+                white 0%,
+                white 30%,
+                rgb(250,160,120) 30%,
+								rgb(250,160,120) 70%, 
+                white 70%, 
+                white 100%);
+}
+
+.angled.third{
+			background-image: linear-gradient(45deg, 
+                white 0%,
+                white 30%,
+                rgb(130,230,135) 30%,
+								rgb(130,230,135) 70%, 
+                white 70%, 
+                white 100%);
+}
+</style>
+</head>
+<body>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:600,700' rel='stylesheet' type='text/css'>
+
+  <div class="container">
+Medium, border-radius, 45deg background
+<div class="wrap">	
+    <button class="clicker">press</button>
+    <div class="circle angled"></div>
+  </div>
+
+Fast, border-radius, vertical background
+  <div class="wrap">	
+    <button class="clicker fast">press</button>
+    <div class="circle angled second"></div>
+  </div>
+
+Faster, no border-radius, 45 deg background
+<div class="wrap">	
+    <button class="clicker faster">press</button>
+    <div class="circle angled third"></div>
+  </div>
+</div>
+</body>
+
+</Html>
